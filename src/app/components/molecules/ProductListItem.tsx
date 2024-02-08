@@ -1,7 +1,7 @@
+import React from "react";
 import { ProductListItemDesc } from "@/app/components/atoms/ProductListItemDesc";
 import { ProductListItemCoverImg } from "@/app/components/atoms/ProductListItemCoverImg"; // Fixed import
 import { ProductItemType } from "../../utils/types";
-import React from "react";
 
 type ProductListItemProps = {
 	product: ProductItemType;
