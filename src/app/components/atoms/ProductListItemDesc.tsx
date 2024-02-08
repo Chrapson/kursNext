@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductItemType } from "@/app/utils/types";
+import type { ProductItemType } from "@/app/utils/types";
 
 type ProductListItemDescProps = {
 	product: ProductItemType;
