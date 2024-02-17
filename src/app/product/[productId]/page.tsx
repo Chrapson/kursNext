@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
+import { type Metadata } from "next/types";
 import { getProductById } from "@/api/fetchProducts";
 import { ProductListItemCoverImg } from "@/ui/atoms/ProductListItemCoverImg";
 import { ProductListItemDesc } from "@/ui/atoms/ProductListItemDesc";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProductsList";
-import { Metadata } from "next/types";
 
 // export async function getStaticParams() {
 // 	const products = await fetchProductsList();

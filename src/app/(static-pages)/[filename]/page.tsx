@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ComponentType } from "react";
+import { type ComponentType } from "react";
 
 const StaticPage = async ({ params }: { params: { filename: string } }) => {
 	const Page = await import(`./${params.filename}.mdx`).then(
