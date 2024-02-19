@@ -10,7 +10,6 @@ export const ProductListItemDesc = ({
 }: ProductListItemDescProps) => {
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<p></p>
 			<p>{name}</p>
 			<p>Category: {category}</p>
 			<p>Price: {price} $</p>
