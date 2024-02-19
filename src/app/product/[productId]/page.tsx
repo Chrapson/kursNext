@@ -42,7 +42,9 @@ const productPage = async ({ params }: { params: { productId: string } }) => {
 			<article className="mx-auto flex transform  cursor-pointer items-center justify-center  py-5 ">
 				<div className=" rounded-2xl border-8 p-10 transition-transform duration-500 hover:scale-110">
 					<ProductListItemCoverImg src={product.coverImg.src} alt={product.coverImg.alt} />
-					<ProductListItemDesc product={product} />
+					<h1>
+						<ProductListItemDesc product={product} />{" "}
+					</h1>
 				</div>
 			</article>
 			<aside className="px-10 py-5">
