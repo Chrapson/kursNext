@@ -1,18 +1,29 @@
-import React from "react";
-import type { ProductItemType } from "@/app/utils/types";
+import { type ProductsListItemFragment } from "@/gql/graphql";
 
 type ProductListItemDescProps = {
-	product: ProductItemType;
+	name: string;
+	price?: number;
+	categories?: ProductsListItemFragment["categories"];
+	isSuggestedProduct?: boolean;
 };
 
 export const ProductListItemDesc = ({
-	product: { name, category, price },
-}: ProductListItemDescProps) => {
-	return (
-		<div className="flex flex-col items-center justify-center">
-			<p>{name}</p>
-			<p>Category: {category}</p>
-			<p>Price: {price} $</p>
-		</div>
-	);
-};
+	name,
+	price,
+	categories,
+	isSuggestedProduct,
+}: ProductListItemDescProps): JSX.Element => (
+	<div className="mt-2 flex flex-col">
+		{isSuggestedProduct ? (
+			<h2 className="font-semibold text-gray-700">{name}</h2>
+		) : (
+			<h1 className="font-semibold text-gray-700">{name}</h1>
+		)}
+		{categories && (
+			<p className="text-sm text-gray-500">
+				{categories.map((category) => category.name).join(", ")}
+			</p>
+		)}
+		{price && <p className="text-sm font-medium text-gray-700">{price / 100}</p>}
+	</div>
+);

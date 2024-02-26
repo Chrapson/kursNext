@@ -1,0 +1,20 @@
+query ProductsGetSuggestedList {
+	products {
+		data {
+			id
+			name
+			categories {
+				name
+			}
+			description
+			images {
+				url
+				alt
+			}
+			price
+		}
+		meta {
+			total
+		}
+	}
+}

@@ -1,8 +1,8 @@
 import React from "react";
 
 type ProductItemProps = {
-	src: string;
-	alt: string;
+	src: string | undefined;
+	alt: string | undefined;
 };
 
 export const ProductListItemCoverImg = ({ src, alt }: ProductItemProps) => {
