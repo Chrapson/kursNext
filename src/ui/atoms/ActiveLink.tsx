@@ -1,75 +1,37 @@
-// "use client";
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import { type ReactNode } from "react";
-// import { type Route } from "next";
-// import clsx from "clsx";
-
-// type ActiveLinkProps<T extends string> = {
-// 	href: Route<T>;
-// 	children: ReactNode;
-// 	exact?: boolean;
-// 	className?: string;
-// 	activeClassName?: string;
-// };
-
-// export const ActiveLink = <T extends string>({
-// 	href,
-// 	children,
-// 	exact = true,
-// 	className = "text-blue-400 hover:text-blue-600 mr-4 ",
-// 	activeClassName = "font-semibold underline",
-// }: ActiveLinkProps<T>) => {
-// 	const pathname = usePathname();
-
-// 	const isActive = exact
-// 		? pathname === href
-// 		: pathname.startsWith(href) &&
-// 			(pathname[href.length] === "/" || pathname.length === href.length);
-
-// 	return (
-// 		<Link
-// 			href={href}
-// 			className={clsx(className, isActive && activeClassName, "align-middle, justify-center")}
-// 		>
-// 			{children}
-// 		</Link>
-// 	);
-// };
 "use client";
 
 import Link, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { type Route } from "next";
 
-type ActiveLinkProps<RouteInferType> = LinkProps<RouteInferType> & {
-	children: string;
-	exact?: boolean;
+type ActiveLinkProps<T extends string> = {
 	activeClassName?: string;
-};
+	className?: string;
+	children: React.ReactNode;
+	href: Route<T>;
+	exact?: boolean;
+} & Omit<LinkProps<T>, "href">;
 
-export const ActiveLink = <RouteInferType,>({
-	exact = true,
+export const ActiveLink = <T extends string>({
+	activeClassName = "bg-black text-white",
+	className = "rounded-lg px-4 py-1 text-black transition-all duration-300 hover:bg-black hover:text-white",
 	children,
-	className = "text-blue-400 hover:text-blue-600",
-	activeClassName = "text-blue-600 underline",
+	exact,
 	href,
-	...rest
-}: ActiveLinkProps<RouteInferType>) => {
+	...props
+}: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
-
-	const path = typeof href === "string" ? href : href.pathname;
-
-	const isActive =
-		(path && pathname && (exact ? pathname === path : pathname.startsWith(path))) || false;
+	const isActive = exact ? pathname === href : pathname.startsWith(href as string);
 
 	return (
 		<Link
-			{...rest}
-			{...{ href }}
-			className={clsx(className, isActive && activeClassName)}
+			href={href}
+			className={clsx(className, {
+				[activeClassName]: isActive,
+			})}
 			aria-current={isActive ? "page" : undefined}
-			role="link"
+			{...props}
 		>
 			{children}
 		</Link>

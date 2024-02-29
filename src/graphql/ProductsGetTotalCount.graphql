@@ -1,0 +1,5 @@
+fragment ProductsGetTotalCount on ProductList {
+	meta {
+		total
+	}
+}

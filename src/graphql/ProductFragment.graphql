@@ -1,0 +1,14 @@
+fragment ProductList on Product {
+	id
+	name
+	price
+	description
+	rating
+	images {
+		url
+		alt
+	}
+	categories {
+		name
+	}
+}

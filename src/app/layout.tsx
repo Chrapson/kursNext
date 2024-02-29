@@ -18,11 +18,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<header className="max-w mx-auto-md p-12 ">
+				<header className="   sticky top-0  z-10 mx-auto mb-5 border-b border-gray-200  bg-gray-400 bg-opacity-15 px-2 backdrop-blur-sm backdrop-filter">
 					<Navbar />
 				</header>
-				<section className="max-w mx-auto-md px-10 ">{children}</section>
-				<footer className="mt-10 text-center">
+				<section className="container mx-auto ">{children}</section>
+				<footer className="my-10 text-center">
 					<p>&copy; 2023 E-shop</p>
 				</footer>
 			</body>

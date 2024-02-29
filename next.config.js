@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	pageExtensions: ["ts", "tsx", "mdx"],
-	experimental: {
-		typedRoutes: true,
-		mdxRs: true,
+	images: {
+		remotePatterns: [
+			{
+				hostname: "static-ourstore.hyperfunctor.com",
+			},
+		],
 	},
 	redirects: async () => {
 		return [
@@ -12,8 +14,19 @@ const nextConfig = {
 				destination: "/products/1",
 				permanent: true,
 			},
+			{
+				source: "/categories/:name",
+				destination: "/categories/:name/1",
+				permanent: true,
+			},
 		];
 	},
+	experimental: {
+		typedRoutes: true,
+		serverActions: true,
+		mdxRs: true,
+	},
 };
-const withMdx = require("@next/mdx")();
-module.exports = withMdx(nextConfig);
+
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);
