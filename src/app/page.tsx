@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { getPaginatedListOfProducts } from "@/api/products";
 import { ProductList } from "@/ui/organisms/ProductList";
 import { LoadingSpinner } from "@/ui/atoms/LoadingSpinner";
-import CollectionsList from "@/ui/organisms/CollectionsList";
+import { CollectionsList } from "@/ui/organisms/CollectionsList";
 import { getListOfCollections } from "@/api/collections";
 
 export const metadata: Metadata = {

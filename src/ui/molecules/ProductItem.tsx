@@ -1,4 +1,4 @@
-import { BadgeDollarSign, ShoppingBag } from "lucide-react";
+import { BadgeDollarSign } from "lucide-react";
 import NextImage from "next/image";
 import { type ProductsListItemFragment } from "@/gql/graphql";
 import { formatMoney } from "@/utils/formatMoney";

@@ -1,11 +1,11 @@
-import { CollectionsGetListItemFragment } from "@/gql/graphql";
+import type { Route } from "next";
+import type { CollectionsGetListItemFragment } from "@/gql/graphql";
 import { CardLink } from "@/ui/atoms/CardLink";
-import { Route } from "next";
 
 type CollectionsListProps = {
 	collections: CollectionsGetListItemFragment[];
 };
-const CollectionsList = ({ collections }: CollectionsListProps) => {
+export const CollectionsList = ({ collections }: CollectionsListProps) => {
 	return (
 		<ul className=" grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
 			{collections.map((collection) => (
@@ -19,4 +19,3 @@ const CollectionsList = ({ collections }: CollectionsListProps) => {
 		</ul>
 	);
 };
-export default CollectionsList;

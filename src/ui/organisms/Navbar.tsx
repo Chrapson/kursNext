@@ -1,8 +1,8 @@
+import { Suspense } from "react";
+import Link from "next/link";
 import { Gem, ShoppingCart } from "lucide-react";
 import { ActiveLink } from "@/ui/atoms/ActiveLink";
 import { Searchbar } from "@/ui/atoms/Searchbar";
-import { Suspense } from "react";
-import Link from "next/link";
 
 export const Navbar = () => {
 	return (

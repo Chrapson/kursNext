@@ -1,6 +1,5 @@
 import { getPaginatedListOfProducts } from "@/api/products";
 import { ProductListItem } from "@/ui/molecules/ProductListItem";
-import { ProductList } from "@/ui/organisms/ProductList";
 
 export const SuggestedProductsList = async () => {
 	const data = await getPaginatedListOfProducts(4, 0);

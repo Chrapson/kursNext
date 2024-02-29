@@ -12,12 +12,8 @@ export const ProductList = ({ products, isSuggestedProduct }: ProductListProps):
 		data-testid={"products-list"}
 	>
 		{products.map((product) => (
-			<li>
-				<ProductListItem
-					key={product.id}
-					product={product}
-					isSuggestedProduct={isSuggestedProduct}
-				/>
+			<li key={product.id}>
+				<ProductListItem product={product} isSuggestedProduct={isSuggestedProduct} />
 			</li>
 		))}
 	</ul>

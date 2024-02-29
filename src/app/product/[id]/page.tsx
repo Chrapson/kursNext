@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { getProductById } from "@/api/product";
 import { getSuggestedProducts } from "@/api/products";
 import { ProductList } from "@/ui/organisms/ProductList";
-import { ProductListItem } from "@/ui/molecules/ProductListItem";
 import { LoadingSpinner } from "@/ui/atoms/LoadingSpinner";
 import { ProductItem } from "@/ui/molecules/ProductItem";
 

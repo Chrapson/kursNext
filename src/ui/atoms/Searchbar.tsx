@@ -3,7 +3,6 @@
 import { SearchIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 import { type Route } from "next";
 import { useDebounce } from "use-debounce";
 
