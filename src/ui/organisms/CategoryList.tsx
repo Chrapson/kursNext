@@ -1,18 +1,19 @@
 import { type Route } from "next";
 import { type CategoriesListItemFragment } from "@/gql/graphql";
-import { PageLink } from "@/ui/atoms/PageLink";
+import { CardLink } from "@/ui/atoms/CardLink";
 
-type CategoryListProps = {
+type ProductListProps = {
 	categories: CategoriesListItemFragment[];
 };
 
-export const CategoryList = ({ categories }: CategoryListProps): JSX.Element => (
+export const CategoryList = ({ categories }: ProductListProps): JSX.Element => (
 	<ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
 		{categories.map((category) => (
-			<PageLink
+			<CardLink
 				name={category.name}
 				key={category.id}
 				href={`/categories/${category.slug}/1` as Route}
+				src=""
 			/>
 		))}
 	</ul>

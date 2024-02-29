@@ -1,0 +1,6 @@
+fragment CollectionsGetListItem on Collection {
+	id
+	name
+	slug
+	description
+}

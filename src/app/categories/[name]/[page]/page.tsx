@@ -25,7 +25,6 @@ export const generateMetadata = async ({ params }: CategoriesNamePageProps) => {
 
 export default async function CategoriesNamePage({ params }: CategoriesNamePageProps) {
 	const category = await getCategoryProductsBySlug(params.name);
-
 	if (!category || category.products.length === 0) return <p>No products found.</p>;
 
 	const take = 4;

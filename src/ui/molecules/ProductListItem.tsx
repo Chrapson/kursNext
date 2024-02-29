@@ -1,28 +1,26 @@
 import Link from "next/link";
+import { CardImage } from "@/ui/atoms/CardImage";
+import { CardDescription } from "@/ui/atoms/CardDescription";
 import { type ProductsListItemFragment } from "@/gql/graphql";
-import { ProductListItemCoverImg } from "@/ui/atoms/ProductListItemCoverImg";
-import { ProductListItemDesc } from "@/ui/atoms/ProductListItemDesc";
+import { ButtonAddToCart } from "@/ui/atoms/ButtonAddToCart";
 
 type ProductListItemProps = {
 	product: ProductsListItemFragment;
 	isSuggestedProduct?: boolean;
 };
 
-export const ProductListItem = ({ product, isSuggestedProduct }: ProductListItemProps) => (
-	<li>
-		<Link href={`/product/${product.id}`}>
-			<article>
-				<ProductListItemCoverImg
-					alt={product?.images[0]?.alt || ""}
-					src={product?.images[0]?.url || ""}
-				/>
-				<ProductListItemDesc
-					name={product?.name}
-					price={product?.price}
-					categories={product?.categories}
-					isSuggestedProduct={isSuggestedProduct}
-				/>
-			</article>
-		</Link>
-	</li>
+export const ProductListItem = ({ product }: ProductListItemProps): JSX.Element => (
+	<Link href={`/product/${product.id}`}>
+		<article>
+			<CardImage alt={product?.name} src={product?.images[0]?.url || ""} />
+			<CardDescription
+				name={product?.name}
+				price={product?.price}
+				categories={product?.categories}
+			/>
+			<div className="mt-1">
+				<ButtonAddToCart />
+			</div>
+		</article>
+	</Link>
 );

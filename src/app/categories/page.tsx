@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
 import { getListOfCategories } from "@/api/categories";
-// import { Spinner } from "@/ui/atoms/Spinner";
 import { CategoryList } from "@/ui/organisms/CategoryList";
+import { LoadingSpinner } from "@/ui/atoms/LoadingSpinner";
 
 export const metadata: Metadata = {
 	title: "Categories",
@@ -19,7 +19,7 @@ export default async function CategoriesPage() {
 
 	return (
 		<section>
-			<Suspense key="categories" fallback={""}>
+			<Suspense key="categories" fallback={<LoadingSpinner />}>
 				<CategoryList categories={categoriesList.data} />
 			</Suspense>
 		</section>

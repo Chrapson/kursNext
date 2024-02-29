@@ -5,6 +5,7 @@ query ProductGetItemById($id: ID!) {
 		}
 		description
 		id
+		rating
 		images {
 			alt
 			url
