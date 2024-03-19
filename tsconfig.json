@@ -25,6 +25,13 @@
 			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".graphqlrc.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".graphqlrc.ts",
+		"src/ui/atoms/ButtonAddToCart.tsx"
+	],
 	"exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-fragment ProductList on Product {
+fragment ProductsListItem on Product {
 	id
 	name
 	price
@@ -6,7 +6,6 @@ fragment ProductList on Product {
 	rating
 	images {
 		url
-		alt
 	}
 	categories {
 		name

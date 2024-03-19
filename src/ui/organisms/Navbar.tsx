@@ -1,8 +1,9 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { Gem, ShoppingCart } from "lucide-react";
+import { Gem } from "lucide-react";
 import { ActiveLink } from "@/ui/atoms/ActiveLink";
 import { Searchbar } from "@/ui/atoms/Searchbar";
+import { Cart } from "@/ui/molecules/Cart";
 
 export const Navbar = () => {
 	return (
@@ -94,27 +95,9 @@ export const Navbar = () => {
 							Accessories
 						</ActiveLink>
 					</li>
-					{/* <li>
-						<ActiveLink
-							href="/privacy-policy"
-							className="mr-5 hover:text-blue-600"
-							activeClassName="text-blue-600"
-						>
-							Privacy policy
-						</ActiveLink>
-					</li>
-					<li>
-						<ActiveLink
-							href="/regulations"
-							className="mr-5 hover:text-blue-600"
-							activeClassName="text-blue-600"
-						>
-							Regulations
-						</ActiveLink>
-					</li> */}
 				</ul>
 			</nav>
-			<ShoppingCart />
+			<Cart />
 		</div>
 	);
 };

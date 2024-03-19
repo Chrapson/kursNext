@@ -13,7 +13,8 @@ export const CollectionsList = ({ collections }: CollectionsListProps) => {
 					key={collection.id}
 					href={`/collections/${collection.slug}` as Route}
 					name={collection.name}
-					src={`${collection.slug}.avif`}
+					// src={`/${collection.slug}.avif`}
+					src=""
 				/>
 			))}
 		</ul>

@@ -17,15 +17,15 @@ export async function generateMetadata({ searchParams }: SearchPageProps) {
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-	if (searchParams.query.length < 2) {
-		return <p>Please enter at least 2 characters to search.</p>;
-	}
 	const products = await getPaginatedListOfProductsBySearch(searchParams.query);
 
 	if (!products || products.data.length === 0) return <p>No products found.</p>;
 
 	return (
 		<section>
+			<h1 className="mb-4 w-fit rounded-xl bg-black p-1.5 text-2xl font-bold text-white">
+				Search results for: &quot;{searchParams.query}&quot;
+			</h1>
 			<Suspense key="searchPage" fallback={<LoadingSpinner />}>
 				<ProductList products={products.data} />
 			</Suspense>

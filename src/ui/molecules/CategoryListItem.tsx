@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { CardImage } from "@/ui/atoms/CardImage";
-import { CardDescription } from "@/ui/atoms/CardDescription";
+// import { CardImage } from "@/ui/atoms/CardImage";
+// import { CardDescription } from "@/ui/atoms/CardDescription";
 import { type CategoriesListItemFragment } from "@/gql/graphql";
 
 type CategoryListItemProps = {
@@ -9,11 +9,11 @@ type CategoryListItemProps = {
 
 export const CategoryListItem = ({ category }: CategoryListItemProps): JSX.Element => (
 	<li>
-		<Link href={`/categories/${category.slug}`}>
-			<article>
-				<CardImage alt={category?.name} src={`./${category.name}.avif`} />
-				<CardDescription name={category?.name} />
-			</article>
+		<Link
+			className="flex h-48 w-full items-center justify-center rounded-lg bg-gray-100 text-center font-semibold shadow-md"
+			href={`/categories/${category.slug}/1`}
+		>
+			{category.name}
 		</Link>
 	</li>
 );
