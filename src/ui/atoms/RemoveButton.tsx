@@ -13,6 +13,7 @@ export const RemoveButton = ({ cartId, productId }: RemoveButtonProps) => {
 	const [isPending, startTransition] = useTransition();
 	return (
 		<button
+			type="button"
 			className="text-red disabled:text-slate-400"
 			disabled={isPending}
 			onClick={() => {

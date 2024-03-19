@@ -27,6 +27,7 @@ export const ButtonAddToCartSmall = ({ productId }: Props) => {
 		>
 			<input type="hidden" name="productId" value={productId} />
 			<button
+				type="button"
 				disabled={pending}
 				className="flex items-center gap-4 rounded-lg border p-4 shadow-md transition-all hover:scale-105 disabled:cursor-wait"
 			>
