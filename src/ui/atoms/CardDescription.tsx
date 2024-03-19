@@ -1,20 +1,29 @@
+import Link from "next/link";
 import { type ProductsListItemFragment } from "@/gql/graphql";
+import { Rating } from "@/ui/atoms/Rating";
 import { formatMoney } from "@/utils/formatMoney";
 
 type CardDescriptionProps = {
-	name: string;
-	price?: number;
-	categories?: ProductsListItemFragment["categories"];
+	product: ProductsListItemFragment;
 };
 
-export const CardDescription = ({ name, price, categories }: CardDescriptionProps): JSX.Element => (
+export const CardDescription = ({ product }: CardDescriptionProps): JSX.Element => (
 	<div className="mt-2 flex flex-col">
-		<h3 className="font-semibold text-gray-700">{name}</h3>
-		{categories && (
+		<Link href={`/product/${product.id}`}>
+			<h3 role="heading" className="font-semibold">
+				{product.name}
+			</h3>
+		</Link>
+		{product.categories && (
 			<p className="text-sm text-gray-500">
-				{categories.map((category) => category.name).join(", ")}
+				{product.categories.map((category) => category.name).join(", ")}
 			</p>
 		)}
-		{price && <p className="text-sm font-medium text-gray-700">{formatMoney(price / 100)}</p>}
+		{product.price && (
+			<p data-testid="product-price" className="text-lg font-bold">
+				{formatMoney(product.price / 100)}
+			</p>
+		)}
+		<Rating rating={product.rating || 0} />
 	</div>
 );

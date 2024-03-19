@@ -1,10 +1,11 @@
 import { type Metadata } from "next";
 import { Suspense } from "react";
-import { getProductById } from "@/api/product";
+import { getProductById, getProductReviewsById } from "@/api/product";
 import { getSuggestedProducts } from "@/api/products";
 import { ProductList } from "@/ui/organisms/ProductList";
 import { LoadingSpinner } from "@/ui/atoms/LoadingSpinner";
 import { ProductItem } from "@/ui/molecules/ProductItem";
+import { Reviews } from "@/ui/organisms/Reviews";
 
 type Params = {
 	params: {
@@ -14,36 +15,28 @@ type Params = {
 
 export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
 	const data = await getProductById(params.id);
-	if (!data) return { title: "Product" };
+	if (!data.product) return { title: "Product" };
 
 	return {
-		title: data.name,
-		description: data.description,
-		openGraph: {
-			title: data.name,
-			description: data.description,
-			images: [
-				{
-					url: data.images[0]?.url || "",
-					alt: data.name,
-				},
-			],
-		},
+		title: data.product.name,
+		description: data.product.description,
 	};
 };
 
 export default async function ProductPage({ params }: Params) {
 	const data = await getProductById(params.id);
 
-	if (!data) return <p>Product not found.</p>;
+	if (!data.product) return <p>Product not found.</p>;
 
-	const suggestedProducts = await getSuggestedProducts(data);
+	const suggestedProducts = await getSuggestedProducts(data.product);
+	const productReviews = await getProductReviewsById(data.product.id);
 
 	return (
 		<section>
 			<Suspense key="product" fallback={<LoadingSpinner />}>
 				<div>
-					<ProductItem product={data} />
+					<ProductItem product={data.product} />
+					<p className="hidden">{data.product.description}</p>
 				</div>
 			</Suspense>
 			<Suspense key="suggestedProducts" fallback={<LoadingSpinner />}>
@@ -56,6 +49,9 @@ export default async function ProductPage({ params }: Params) {
 					</div>
 				)}
 			</Suspense>
+			{productReviews.product?.reviews && (
+				<Reviews product={data.product} reviews={productReviews.product.reviews} />
+			)}
 		</section>
 	);
 }

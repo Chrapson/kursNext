@@ -1,26 +1,18 @@
-import Link from "next/link";
 import { CardImage } from "@/ui/atoms/CardImage";
 import { CardDescription } from "@/ui/atoms/CardDescription";
 import { type ProductsListItemFragment } from "@/gql/graphql";
-import { ButtonAddToCart } from "@/ui/atoms/ButtonAddToCart";
+import { ButtonAddToCartSmall } from "@/ui/atoms/ButtonAddToCartSmall";
 
 type ProductListItemProps = {
 	product: ProductsListItemFragment;
-	isSuggestedProduct?: boolean;
 };
 
 export const ProductListItem = ({ product }: ProductListItemProps): JSX.Element => (
-	<Link href={`/product/${product.id}`}>
+	<li className="rounded-xl bg-gray-100 p-4 shadow-md">
 		<article>
-			<CardImage alt={product?.name} src={product?.images[0]?.url || ""} />
-			<CardDescription
-				name={product?.name}
-				price={product?.price}
-				categories={product?.categories}
-			/>
-			<div className="mt-1">
-				<ButtonAddToCart />
-			</div>
+			<CardImage alt={product?.name} src={product.images[0]?.url || ""} />
+			<CardDescription product={product} />
+			<ButtonAddToCartSmall productId={product.id} />
 		</article>
-	</Link>
+	</li>
 );

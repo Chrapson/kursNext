@@ -2,7 +2,7 @@ import { executeGraphQL } from "@/api/graphql";
 import { CollectionsGetListDocument, CollectionGetItemDocument } from "@/gql/graphql";
 
 export const getListOfCollections = async () => {
-	const graphqlResponse = await executeGraphQL(CollectionsGetListDocument);
+	const graphqlResponse = await executeGraphQL({ query: CollectionsGetListDocument });
 
 	if (!graphqlResponse) {
 		throw new Error("Failed to fetch collections");
@@ -12,9 +12,14 @@ export const getListOfCollections = async () => {
 };
 
 export const getCollectionBySlug = async (slug: string) => {
-	const graphqlResponse = await executeGraphQL(CollectionGetItemDocument, { slug });
+	const graphqlResponse = await executeGraphQL({
+		query: CollectionGetItemDocument,
+		variables: { slug },
+	});
+
 	if (!graphqlResponse) {
 		throw new Error("Failed to fetch collection");
 	}
+
 	return graphqlResponse.collection;
 };

@@ -31,7 +31,6 @@ export default async function CategoriesNamePage({ params }: CategoriesNamePageP
 	const pageNumber = params.page ? Number(params.page[0]) : 1;
 	const totalPages = Math.ceil(category.products.length / take);
 
-	// frontend pagination
 	const slicedProducts = category.products.slice((pageNumber - 1) * take, pageNumber * take);
 
 	return (
