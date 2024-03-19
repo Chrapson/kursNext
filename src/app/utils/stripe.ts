@@ -25,7 +25,7 @@ export const createCheckoutSession = async (
 	if (!cart) {
 		throw new Error("Cart not found");
 	}
-
+	const HOST_URL = process.env.HOST_URL || "http://localhost:3000";
 	const checkoutSession = await stripe.checkout.sessions.create({
 		payment_method_types: ["card", "blik", "p24"],
 		metadata: {
@@ -44,8 +44,8 @@ export const createCheckoutSession = async (
 			quantity: item.quantity,
 		})),
 		mode: "payment",
-		success_url: "http://localhost:3000/cart/success?sessionId={CHECKOUT_SESSION_ID}",
-		cancel_url: "http://localhost:3000/cart",
+		success_url: `${HOST_URL}/cart/success?sessionId=CHECKOUT_SESSION_ID`,
+		cancel_url: `${HOST_URL}/cart`,
 	});
 
 	return checkoutSession;
