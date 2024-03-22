@@ -23,7 +23,7 @@ export const CartModal = ({ cart }: ModalProps) => {
 				</a>
 			</div>
 			<div className="flex-1 overflow-auto py-4">
-				{cart.items.length === 0 ? <p>Cart is empty</p> : <CartProductList cart={cart} />}
+				{!cart ? <p>Cart is empty</p> : <CartProductList cart={cart} />}
 			</div>
 			{cart && (
 				<div className="flex w-full flex-col justify-end border-t border-gray-200 py-4">
